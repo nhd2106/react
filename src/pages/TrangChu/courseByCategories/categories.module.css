@@ -1,0 +1,16 @@
+.categories_inner{
+    box-shadow: 0 0 1px;
+    padding: 5px 0;
+    
+}
+.categories_inner:hover{
+  background: whitesmoke;
+
+}
+
+
+.categories_outer{
+    padding-top: 10px;
+    padding-bottom:  10px;
+    line-height: 43px;
+}

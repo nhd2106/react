@@ -1,0 +1,86 @@
+[
+  {
+    "maKhoaHoc": "Backend_01",
+    "biDanh": "lap-trinh-golang",
+    "tenKhoaHoc": "Lập trình Golang",
+    "moTa": "Lập trình Golang",
+    "luotXem": 2,
+    "hinhAnh": "http://elearning0706.cybersoft.edu.vn/hinhanh/lap-trinh-golang.jpeg",
+    "maNhom": "GP01",
+    "ngayTao": "06/02/2020",
+    "soLuongHocVien": 0,
+    "nguoiTao": {
+      "taiKhoan": "cuongnt5",
+      "hoTen": "Nguyen Thanh Cuong",
+      "maLoaiNguoiDung": "GV",
+      "tenLoaiNguoiDung": "Giáo vụ"
+    },
+    "danhMucKhoaHoc": {
+      "maDanhMucKhoahoc": "BackEnd",
+      "tenDanhMucKhoaHoc": "Lập trình Backend"
+    }
+  },
+  {
+    "maKhoaHoc": "Backend_02",
+    "biDanh": "nodejs",
+    "tenKhoaHoc": "NodeJS",
+    "moTa": "Node.js là một nền tảng chạy trên môi trường V8 JavaScript runtime - một trình thông dịch JavaScript cực nhanh chạy",
+    "luotXem": 3,
+    "hinhAnh": "http://elearning0706.cybersoft.edu.vn/hinhanh/nodejs.jpg",
+    "maNhom": "GP01",
+    "ngayTao": "06/02/2020",
+    "soLuongHocVien": 0,
+    "nguoiTao": {
+      "taiKhoan": "minhnguyen1",
+      "hoTen": "minhnguyen112",
+      "maLoaiNguoiDung": "GV",
+      "tenLoaiNguoiDung": "Giáo vụ"
+    },
+    "danhMucKhoaHoc": {
+      "maDanhMucKhoahoc": "BackEnd",
+      "tenDanhMucKhoaHoc": "Lập trình Backend"
+    }
+  },
+  {
+    "maKhoaHoc": "BE_05",
+    "biDanh": "sql-2015",
+    "tenKhoaHoc": "SQL 2015",
+    "moTa": "SQL là cơ sở dữ liệu quan hệ",
+    "luotXem": 5,
+    "hinhAnh": "http://elearning0706.cybersoft.edu.vn/hinhanh/sql-2015.jfif",
+    "maNhom": "GP01",
+    "ngayTao": "04/02/2020",
+    "soLuongHocVien": 0,
+    "nguoiTao": {
+      "taiKhoan": "mgn",
+      "hoTen": "NGUYEN VU",
+      "maLoaiNguoiDung": "GV",
+      "tenLoaiNguoiDung": "Giáo vụ"
+    },
+    "danhMucKhoaHoc": {
+      "maDanhMucKhoahoc": "BackEnd",
+      "tenDanhMucKhoaHoc": "Lập trình Backend"
+    }
+  },
+  {
+    "maKhoaHoc": "cplusplus01",
+    "biDanh": "c-plus-plus",
+    "tenKhoaHoc": "C++ plus plus",
+    "moTa": "hay qua",
+    "luotXem": 10,
+    "hinhAnh": "http://elearning0706.cybersoft.edu.vn/hinhanh/c-plus-plus.png",
+    "maNhom": "GP01",
+    "ngayTao": "25/02/2020",
+    "soLuongHocVien": 0,
+    "nguoiTao": {
+      "taiKhoan": "caochihieu",
+      "hoTen": "Cao Chi Hieu",
+      "maLoaiNguoiDung": "GV",
+      "tenLoaiNguoiDung": "Giáo vụ"
+    },
+    "danhMucKhoaHoc": {
+      "maDanhMucKhoahoc": "BackEnd",
+      "tenDanhMucKhoaHoc": "Lập trình Backend"
+    }
+  }
+]

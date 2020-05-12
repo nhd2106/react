@@ -1,0 +1,12 @@
+.centerInfo{
+    margin: auto;
+    width: 50%;
+    grid-row: auto;
+}
+
+.icon {
+    font-size: 55px;
+    position: relative;
+    top: -4px;
+    width: 40px;
+}

@@ -1,0 +1,53 @@
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+html
+body {
+  font-size: 16px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/* hiệu chỉnh khoảng cách các thẻ slick */
+.slick-slide {
+  padding: 0 10px;
+}
+
+.slick-list {
+  margin: 0 1em;
+}
+
+/*  */
+.slick-arrow{
+  background-color: #44D5DF;
+  color: #44D5DF;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.slick-arrow:hover, .slick-arrow:focus{
+  background-color: #44D5DF;
+  color: #44D5DF;
+  width: 50px;
+  height: 50px;
+}
+.slick-arrow::before{
+  background-color: #44D5DF;
+}
+.btn{
+  border: 0.5px solid cornflowerblue;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
