@@ -4,8 +4,7 @@ import {
   CHANGE_PAGE,
   LAY_DANH_MUC_KHOA_HOC,
   LAY_KHOA_HOC_THEO_DANH_MUC,
-  LAY_DANH_SACH_KHOA_HOC_PHAN_TRANG,
-  THEM_KHOA_HOC, TIM_KIEM_KHOA_HOC
+  LAY_DANH_SACH_KHOA_HOC_PHAN_TRANG, TIM_KIEM_KHOA_HOC, TOGGLE_MODAL, CHON_KHOA_HOC
 } from "../constants/QuanLyKhoaHoc";
 import axios from "../../utils/axios";
 
@@ -152,6 +151,8 @@ export const ThemKhoaHoc = khoaHoc => {
          data: formData
        }).then(aaa =>{
          window.alert("Thêm khóa học thành công")
+       }).catch(err=>{
+         alert("Thêm khóa học thất bại!")
        })
       });
   };
@@ -172,7 +173,57 @@ export const XoaKhoaHoc = maKhoaHoc => {
       },
       url: `QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${maKhoaHoc}`,
       data: dataSubmit
+    }).then(res=>{
+      window.alert("Xóa khóa học thành công")
+    }).catch(err=>{
+      window.alert("bạn không thể xóa khóa học")
     });
+  };
+};
+export const capNhatKhoaHocAction = (khoaHoc) =>{
+  return (dispatch, getState) => {
+    // Lấy dữ liệu từ redux store thông qua getState
+    const { userInfo } = getState().quanLyNguoiDungReducer;
+    const dataSubmit = {
+      ...khoaHoc,
+      hinhAnh: khoaHoc.hinhAnh.name,
+      taiKhoanNguoiTao: userInfo.taiKhoan
+    };
+    
+    axios.request({
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${userInfo.accessToken}`
+        },
+        url: "QuanLyKhoaHoc/CapNhatKhoaHoc",
+        data: dataSubmit
+      })
+      .then(result => {
+       let formData = new FormData();
+       formData.append("file",khoaHoc.hinhAnh);
+       formData.append("tenKhoaHoc",khoaHoc.tenKhoaHoc)
+       axios.request({
+         method: "post",
+         url: "QuanLyKhoaHoc/UploadHinhAnhKhoaHoc",
+         data: formData
+       }).then(aaa =>{
+         window.alert("Cập nhật thông tin khóa học thành công")
+       })
+       }).catch(err =>{
+        alert("Cập nhật thông tin khóa học thất bại!")
+      });
+  };
+}
+export const chonKhoaHocAction = (khoaHoc) => {
+  return {
+    type: CHON_KHOA_HOC,
+    data: khoaHoc
+  }
+}
+export const toggleModalAction = status => {
+  return {
+    type: TOGGLE_MODAL,
+    data: status
   };
 };
 

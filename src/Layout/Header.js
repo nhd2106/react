@@ -120,7 +120,7 @@ const Header = (props) => {
                 </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/users">
+                <Link className="nav-link" to="/contact">
                   Contact
                 </Link>
               </li>
@@ -148,7 +148,7 @@ const Header = (props) => {
               </li>
               <li className="nav-item">
                {
-                 isloggedIn? <Link className="nav-link" to="/sign-out"> 
+                 isloggedIn? <Link className="nav-link" to="/sign-out" > 
                  <IconButton ><PowerSettingsNewIcon/></IconButton>
                </Link>    : <div className="nav-link" >
                  <button
@@ -228,7 +228,7 @@ const Header = (props) => {
                                   <Input className="form-control mb-2" tag={Field} type='text' name='email'/>
                                 
                                  <div className="mt-2  text-center">
-                                 <Button className-="btn btn-success " type="submit" onClick={handleSubmit}>Đăng ký</Button>
+                                 <Button className="btn btn-success " type="submit" onClick={handleSubmit}>Đăng ký</Button>
                                  </div>
                                 </Form>
                                 
@@ -236,13 +236,13 @@ const Header = (props) => {
                             </Formik>
                         </div>
                         
-                        <div class="options text-left mx-5">
-                          <p class="pt-1">
+                        <div className="options text-left mx-5">
+                          <p className="pt-1">
                             Bạn đã có tài khoản?{" "}
                             <Link type="button"
                               to="/sign-in"
                               
-                              class="blue-text"
+                              className="blue-text"
                               
                             >
                               Đăng nhập

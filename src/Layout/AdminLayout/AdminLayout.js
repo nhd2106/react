@@ -69,12 +69,12 @@ const AdminLayout = props => {
           </Link>
         
          
-          <Link to="/admin/add-user" className={`nav-item text-decoration-none py-3 d-block  ${adminStyle.adminLink}`}>
+          <Link to="/admin/user-list-2" className={`nav-item text-decoration-none py-3 d-block  ${adminStyle.adminLink}`}>
           <span className='pl-4'><ListAltIcon/> Do something 1</span>
           </Link>
          
           
-          <Link to="#" className={`nav-item text-decoration-none py-3 d-block  ${adminStyle.adminLink}`}>
+          <Link to="/admin/course-list-2" className={`nav-item text-decoration-none py-3 d-block  ${adminStyle.adminLink}`}>
           <span className='pl-4'><ListAltIcon/> Do something 2</span>
           </Link>
         </div>

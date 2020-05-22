@@ -5,7 +5,7 @@ const initialValue = {
     danhSachNguoiDung : [],
     add : 0,
     isOpen: false,
-    nguoiDungDangChon:{}
+    nguoiDungDuocChon:{}
 
 }
 
@@ -35,7 +35,7 @@ const quanLyNguoiDungReducer = (state= initialValue, action) => {
         case CHON_NGUOI_DUNG: {
             return{
                 ...state,
-                nguoiDungDangChon: action.data
+                nguoiDungDuocChon: action.data
             }
         }
         case TOGGLE_MODAL: {

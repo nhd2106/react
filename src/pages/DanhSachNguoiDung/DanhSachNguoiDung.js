@@ -5,7 +5,8 @@ import {
   ThemNguoiDung,
   XoaTaiKhoan,
   TimKiemNguoiDung,
-  chonNguoiDungAction
+  chonNguoiDungAction,
+  SuaTaiKhoan
 } from "../../redux/actions/QuanLyNguoiDungAction";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
@@ -39,6 +40,9 @@ const DanhSachNguoiDung = () => {
   const danhSachNguoiDung = useSelector(
     state => state.quanLyNguoiDungReducer.danhSachNguoiDung
   );
+  const nguoiDungDuocChon = useSelector(
+    state => state.quanLyNguoiDungReducer.nguoiDungDuocChon
+  )
   // hàm lấy value từ input để dispatch tìm người dùng
   let [tuKhoa, setTuKhoa] = useState("")
   const handleChange  = e =>{
@@ -48,7 +52,19 @@ const DanhSachNguoiDung = () => {
     console.log(name, value);
     
   }
+  const user = {
+    taiKhoan: nguoiDungDuocChon.taiKhoan || "",
+    matKhau: nguoiDungDuocChon.matKhau ||"",
+    hoTen: nguoiDungDuocChon.hoTen ||"",
+    soDT: nguoiDungDuocChon.soDt ||"",
+    maLoaiNguoiDung: nguoiDungDuocChon.maLoaiNguoiDung ||"",
+    maNhom:  nguoiDungDuocChon.maNhom||"",
+    email: nguoiDungDuocChon.email || ""
+  }
+  
 
+  console.log(nguoiDungDuocChon,"người dùng được chọn");
+  
   // reRender danh sách khóa học
   let render = true
   if(tuKhoa){
@@ -80,7 +96,8 @@ const DanhSachNguoiDung = () => {
     dispatch(XoaTaiKhoan(taiKhoan));
   };
   // sua tai khoan
-  
+   
+   
 
   // material ui style
   const classes = useStyles();
@@ -147,27 +164,36 @@ const DanhSachNguoiDung = () => {
                     </div>
                     <div className="modal-body">
                       <Formik
+                        enableReinitialize={true}
                         initialValues={{
-                          taiKhoan: "",
-                          matKhau: "",
-                          hoTen: "",
-                          soDT: "",
-                          maLoaiNguoiDung: "",
-                          maNhom: ""
+                          taiKhoan: user.taiKhoan,
+                          matKhau: user.matKhau,
+                          hoTen: user.hoTen,
+                          soDT: user.soDT,
+                          maLoaiNguoiDung: user.maLoaiNguoiDung,
+                          maNhom: user.maNhom,
+                          email: user.email
                         }}
                         onSubmit={values => {
-                          console.log(values);
-                          dispatch(ThemNguoiDung(values));
+                          console.log(values,"valuessssss");
+                          if(user.taiKhoan ==""){
+                            dispatch(ThemNguoiDung(values));
+                          }else{
+                            dispatch(SuaTaiKhoan(values))
+                          }
+                          
                         }}
                       >
-                        {({ handleSubmit }) => (
-                          <Form>
+                        {props  => (
+                          <Form onSubmit={props.handleSubmit}>
                             <Label>Tài khoản</Label>
                             <Input
                               className="form-control"
                               tag={Field}
                               type="text"
                               name="taiKhoan"
+                              
+                              
                             />
 
                             <Label>Mật khẩu</Label>
@@ -208,6 +234,7 @@ const DanhSachNguoiDung = () => {
                               tag={Field}
                               type="text"
                               name="maNhom"
+                              
                             />
 
                             <Label>Email</Label>
@@ -228,7 +255,7 @@ const DanhSachNguoiDung = () => {
                               <button
                                 type="submit"
                                 onClick={() => {
-                                  handleSubmit();
+                                  props.handleSubmit();
                                   setThemXoa(themXoa + 1);
                                 
                                 }}
@@ -282,8 +309,8 @@ const DanhSachNguoiDung = () => {
                         startIcon={<EditIcon />}
                         data-toggle="modal"
                         data-target="#modelId"
-                        onClick={()=> chonNguoiDungAction(item.taiKhoan)}
-                      
+                        onClick={()=> dispatch(chonNguoiDungAction(item))}
+                       
                       >
                        sửa
                       </Button>

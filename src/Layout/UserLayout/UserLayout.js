@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../Header";
 import Footer from "../Footer/Footer";
-import TrangChu from "../../pages/TrangChu/TrangChu";
 import SubcribeForm from "../../pages/TrangChu/subcribeForm/SubcribeForm";
 
 const UserLayout = props => {

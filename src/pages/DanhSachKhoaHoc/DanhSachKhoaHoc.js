@@ -8,7 +8,7 @@ import {
 } from "../../redux/actions/QuanLyKhoaHocAction";
 import Slider from "react-slick";
 import PaginationComponent from "../../Layout/Pagination/Pagination";
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, makeStyles, FormControl, FormLabel, FormControlLabel, Radio, RadioGroup, FormHelperText } from "@material-ui/core";
+import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, makeStyles, FormControl, FormControlLabel, Radio, RadioGroup } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(theme => ({
@@ -145,7 +145,7 @@ const DanhSachKhoaHoc = (...props) => {
                         <img
                           className="card-img-top"
                           src={item.hinhAnh}
-                          alt
+                          alt=""
                           width="100%"
                           height="150px"
                         />

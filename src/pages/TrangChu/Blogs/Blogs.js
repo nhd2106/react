@@ -28,13 +28,13 @@ const Blogs = () => {
                                 <h6 className="card-title">Even the all-powerful Pointing has no control about the blind texts</h6>
                                 <div className="blog-footers">
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon1}`}>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> <span>March 29, 2020</span></a>
+                                    <a href="#"><i className="fa fa-calendar" aria-hidden="true"></i> <span>March 29, 2020</span></a>
                                 </div>
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon1}`}>
-                                    <a a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Admin</span></a>
+                                    <a  href="#"><i className="fa fa-user" aria-hidden="true"></i> <span>Admin</span></a>
                                 </div>
                                 <div className={`d-inline-block ${blogStyle.icon1}`}>
-                                    <a a href="#"><i class="fa fa-comment" aria-hidden="true"></i> <span>19</span></a>
+                                    <a  href="#"><i className="fa fa-comment" aria-hidden="true"></i> <span>19</span></a>
                                 </div>
                                 <div>
 
@@ -51,9 +51,9 @@ const Blogs = () => {
                     <div className='d-flex'>
                         <div className="mr-3">
                             <figure>
-                                <Link>
+                                <a>
                                     <img width='130px' src='https://colorlib.com/preview/theme/university/images/img_1.jpg'/>
-                                </Link>
+                                </a>
                             </figure>
                         </div>
                         <div>
@@ -62,13 +62,13 @@ const Blogs = () => {
                             </h6>
                             <div className="blogs-footers">
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> <span>March 29, 2020</span></a>
+                                    <a href="#"><i className="fa fa-calendar" aria-hidden="true"></i> <span>March 29, 2020</span></a>
                                 </div>
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Admin</span></a>
+                                    <a  href="#"><i className="fa fa-user" aria-hidden="true"></i> <span>Admin</span></a>
                                 </div>
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a a href="#"><i class="fa fa-comment" aria-hidden="true"></i> <span>19</span></a>
+                                    <a  href="#"><i className="fa fa-comment" aria-hidden="true"></i> <span>19</span></a>
                                 </div>
                                 <div>
 
@@ -80,9 +80,9 @@ const Blogs = () => {
                     <div className='d-flex my-4'>
                         <div className="mr-3">
                             <figure>
-                                <Link>
+                                <a>
                                     <img width='130px' src='https://colorlib.com/preview/theme/university/images/img_2.jpg'></img>
-                                </Link>
+                                </a>
                             </figure>
                         </div>
                         <div>
@@ -91,13 +91,13 @@ const Blogs = () => {
                             </h6>
                             <div className="blogs-footers">
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> <span>March 29, 2020</span></a>
+                                    <a href="#"><i className="fa fa-calendar" aria-hidden="true"></i> <span>March 29, 2020</span></a>
                                 </div>
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Admin</span></a>
+                                    <a href="#"><i className="fa fa-user" aria-hidden="true"></i> <span>Admin</span></a>
                                 </div>
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a a href="#"><i class="fa fa-comment" aria-hidden="true"></i> <span>19</span></a>
+                                    <a href="#"><i className="fa fa-comment" aria-hidden="true"></i> <span>19</span></a>
                                 </div>
                                 <div>
 
@@ -110,9 +110,9 @@ const Blogs = () => {
                     <div className='d-flex my-4'>
                         <div className="mr-3">
                             <figure>
-                                <Link>
+                                <a>
                                     <img width='130px' src='https://colorlib.com/preview/theme/university/images/img_3.jpg'></img>
-                                </Link>
+                                </a>
                             </figure>
                         </div>
                         <div>
@@ -121,13 +121,13 @@ const Blogs = () => {
                             </h6>
                             <div className="blogs-footers">
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> <span>March 29, 2020</span></a>
+                                    <a href="#"><i className="fa fa-calendar" aria-hidden="true"></i> <span>March 29, 2020</span></a>
                                 </div>
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Admin</span></a>
+                                    <a href="#"><i className="fa fa-user" aria-hidden="true"></i> <span>Admin</span></a>
                                 </div>
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a a href="#"><i class="fa fa-comment" aria-hidden="true"></i> <span>19</span></a>
+                                    <a href="#"><i className="fa fa-comment" aria-hidden="true"></i> <span>19</span></a>
                                 </div>
                                 <div>
 
@@ -140,9 +140,9 @@ const Blogs = () => {
                     <div className='d-flex my-4'>
                         <div className="mr-3">
                             <figure>
-                                <Link>
+                                <a>
                                     <img width='130px' src='https://colorlib.com/preview/theme/university/images/img_1.jpg'></img>
-                                </Link>
+                                </a>
                             </figure>
                         </div>
                         <div>
@@ -151,13 +151,13 @@ const Blogs = () => {
                             </h6>
                             <div className="blogs-footers">
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> <span>March 29, 2020</span></a>
+                                    <a href="#"><i className="fa fa-calendar" aria-hidden="true"></i> <span>March 29, 2020</span></a>
                                 </div>
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Admin</span></a>
+                                    <a href="#"><i className="fa fa-user" aria-hidden="true"></i> <span>Admin</span></a>
                                 </div>
                                 <div className={`d-inline-block mr-3 ${blogStyle.icon2}`}>
-                                    <a a href="#"><i class="fa fa-comment" aria-hidden="true"></i> <span>19</span></a>
+                                    <a href="#"><i className="fa fa-comment" aria-hidden="true"></i> <span>19</span></a>
                                 </div>
                                 <div>
 

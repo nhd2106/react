@@ -6,7 +6,9 @@ import {
   LAY_KHOA_HOC_THEO_DANH_MUC,
 
   LAY_DANH_SACH_KHOA_HOC_PHAN_TRANG,
-  TIM_KIEM_KHOA_HOC
+  TIM_KIEM_KHOA_HOC,
+  CHON_KHOA_HOC,
+  TOGGLE_MODAL
 } from "../constants/QuanLyKhoaHoc";
 
 const initialState = {
@@ -16,7 +18,9 @@ const initialState = {
   danhMucKhoaHoc: [],
   danhSachKhoaHocDm: [],
   currentPage: 1,
-  totalCount: 0
+  totalCount: 0,
+  khoaHocDuocChon: {},
+  isOpen: false
   
 };
 
@@ -62,7 +66,16 @@ const quanLyKhoaHocReducer = (state = initialState, action) => {
         danhSachKhoaHoc: action.data
       }
     }
-
+    case CHON_KHOA_HOC : {
+      return {
+        ...state,
+        khoaHocDuocChon: action.data
+      }
+    }
+    case TOGGLE_MODAL: {
+      return { ...state, isOpen: action.data };
+    }
+     
     default:
       return state;
   }

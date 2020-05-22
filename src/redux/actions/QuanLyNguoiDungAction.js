@@ -105,7 +105,24 @@ export const XoaTaiKhoan = taiKhoan => {
       });
     };
   };
+export const SuaTaiKhoan = taiKhoan => {
+    return (dispatch,getState) => {
+        const {userInfo} = getState().quanLyNguoiDungReducer;
+        axios.request({
+            method: "PUT",
+            headers:{
+                Authorization: `Bearer ${userInfo.accessToken}`
+            },
+            url: `QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+            data: taiKhoan
+        }).then(res=>{
+            window.alert("Đã cập thông tin người dùng")
+        }).catch(err=>{
+            window.alert("bạn không thể cập nhật thông tin người dùng")
+        })
 
+    }
+}
 
 
 

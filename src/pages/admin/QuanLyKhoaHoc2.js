@@ -6,7 +6,9 @@ import {
   LayDanhSachKhoaHocBT,
   ThemKhoaHoc,
   XoaKhoaHoc,
-  timKiemKhoaHoc
+  timKiemKhoaHoc,
+  chonKhoaHocAction,
+  capNhatKhoaHocAction
 } from "../../redux/actions/QuanLyKhoaHocAction";
 import {
   TableContainer,
@@ -24,7 +26,8 @@ import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { Formik, Form, Field, useField } from "formik";
-import { Label, Input } from "reactstrap";
+import { Label, Input, Modal, ModalHeader, ModalBody } from "reactstrap";
+import { toggleModalAction } from "../../redux/actions/QuanLyKhoaHocAction";
 
 const MySelect = ({ values, ...props }) => {
   const [field, meta] = useField(props);
@@ -38,16 +41,31 @@ const MySelect = ({ values, ...props }) => {
     </select>
   );
 };
-  
 
 
   // ---------------------------------
-const QuanLyKhoaHoc = () => {
+const QuanLyKhoaHoc2 = () => {
   const dispatch = useDispatch();
   const {danhSachKhoaHoc} = useSelector(
     state => state.quanLyKhoaHoc
   );
+  const khoaHocDuocChon =  useSelector(state => state.quanLyKhoaHoc.khoaHocDuocChon)
+  console.log(khoaHocDuocChon,"Khóa học được chọn");
   
+  const isOpen = useSelector(state => state.quanLyKhoaHoc.isOpen)  
+const khoaHoc = {
+    maKhoaHoc: khoaHocDuocChon.maKhoaHoc||"",
+    tenKhoaHoc:khoaHocDuocChon.tenKhoaHoc||  "",
+    moTa:khoaHocDuocChon.moTa|| "",
+    luotXem:khoaHocDuocChon.luotXem|| 0,
+    danhGia:khoaHocDuocChon.danhGia|| 0,
+    hinhAnh:khoaHocDuocChon.hinhAnh|| "",
+    maNhom:khoaHocDuocChon.maNhom|| "",
+    ngayTao: khoaHocDuocChon.ngayTao|| "",
+    maDanhMucKhoaHoc: khoaHocDuocChon.maDanhMucKhoaHoc|| "",
+    taiKhoanNguoiTao: khoaHocDuocChon.taiKhoanNguoiTao|| ""
+}
+const onToggle = status => dispatch(toggleModalAction(status))
   const xoaKhoaHoc = maKhoaHoc => {
     dispatch(XoaKhoaHoc(maKhoaHoc));
   
@@ -94,8 +112,10 @@ console.log(themXoa);
           <div className="col-4">
             <Button
               style={{ background: "#28A745" }}
-              data-toggle="modal"
-              data-target="#modelId"
+              onClick= {()=>{
+                  onToggle(true)
+                  dispatch(chonKhoaHocAction({}))
+              }}
             >
               <AddIcon /> Thêm khóa học
             </Button>
@@ -117,46 +137,35 @@ console.log(themXoa);
           </div>
         </div>
       </div>
-      <div
-        className="modal fade"
-        id="modelId"
-        tabIndex={-1}
-        role="dialog"
-        aria-labelledby="modelTitleId"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Thêm khóa học</h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <Formik
+     <Modal isOpen= {isOpen}
+            toggle= {()=> onToggle(false)}
+     >
+         <ModalHeader>
+             Thêm Khóa Học
+         </ModalHeader>
+         <ModalBody>
+         <Formik
                 initialValues={{
-                  maKhoaHoc: "",
-                  tenKhoaHoc: "",
-                  moTa: "",
-                  luotXem: 0,
-                  danhGia: 0,
-                  hinhAnh: "",
-                  maNhom: "",
-                  ngayTao: "",
-                  maDanhMucKhoaHoc: "",
-                  taiKhoanNguoiTao: ""
+                  maKhoaHoc: khoaHoc.maKhoaHoc,
+                  tenKhoaHoc: khoaHoc.tenKhoaHoc ,
+                  moTa: khoaHoc.moTa,
+                  luotXem: khoaHoc.luotXem,
+                  danhGia: khoaHoc.danhGia,
+                  hinhAnh: khoaHoc.hinhAnh,
+                  maNhom: khoaHoc.maNhom,
+                  ngayTao: khoaHoc.ngayTao,
+                  maDanhMucKhoaHoc: khoaHoc.maDanhMucKhoaHoc,
+                  taiKhoanNguoiTao: khoaHoc.taiKhoanNguoiTao
                 }}
                 onSubmit={values => {
                   console.log(values);
                   console.log(values.hinhAnh.name);
                   
-                  dispatch(ThemKhoaHoc(values));
+                  if(khoaHoc.maKhoaHoc == ""){
+                    dispatch(ThemKhoaHoc(values))
+                  }else{
+                    dispatch(capNhatKhoaHocAction(values))
+                  };
                  
                  
                   
@@ -257,7 +266,9 @@ console.log(themXoa);
                       <button
                         type="button"
                         className="btn btn-secondary"
-                        data-dismiss="modal"
+                        onClick= {()=>{
+                            onToggle(false)
+                        }}
                       >
                         Close
                       </button>
@@ -266,21 +277,20 @@ console.log(themXoa);
                         onClick={() => {
                           handleSubmit();
                           setThemXoa(themXoa + 1);
-                          // window.location.reload();
+                        onToggle(false)
                         }}
-                        data-dismiss="modal"
+                        
                         className="btn btn-primary"
                       >
                         Thêm
                       </button>
                     </div>
+
                   </Form>
                 )}
               </Formik>
-            </div>
-          </div>
-        </div>
-      </div>
+         </ModalBody>
+     </Modal>
 
       <Paper className="">
         <TableContainer>
@@ -310,6 +320,10 @@ console.log(themXoa);
                       variant="contained"
                       color="primary"
                       startIcon={<EditIcon />}
+                      onClick={()=>{
+                        onToggle(true)
+                        dispatch(chonKhoaHocAction(khoaHoc))
+                      }}
                     >
                       Sửa
                     </Button>
@@ -322,7 +336,7 @@ console.log(themXoa);
                       color="secondary"
                       startIcon={<DeleteIcon />}
                     >
-                      Xóa
+                      Xóa 
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -335,4 +349,4 @@ console.log(themXoa);
   );
 };
 
-export default QuanLyKhoaHoc;
+export default QuanLyKhoaHoc2;

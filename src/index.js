@@ -13,7 +13,7 @@ import { BrowserRouter } from "react-router-dom";
 const composed = compose(
   applyMiddleware(thunk),
   // bỏ  redux dev tool để có thể chạy trên nền tảng mobile
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 const store = createStore(rootReducer, composed);

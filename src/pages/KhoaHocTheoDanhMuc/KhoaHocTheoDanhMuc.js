@@ -9,10 +9,13 @@ const KhoaHocTheoDanhMuc = (...props) => {
   );
   useEffect(() => {
     const maDanhMuc = props[0].match.params;
-    
+
     dispatch(LayKhoaHocTheoDanhMuc(maDanhMuc));
+    
   }, []);
- 
+  
+  
+  
 
   return (
     <div className="container">
