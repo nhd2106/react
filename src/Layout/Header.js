@@ -246,7 +246,7 @@ const Header = (props) => {
                                   </div>
 
                                  <div className='form-group'>
-                                 <Label>Mã nhóm</Label>
+                                 <Label>Mã nhóm (GP01->GP09)</Label>
                                   <Input className="form-control " tag={Field} type='text' name='maNhom'/>
                                   <ErrorMessage name="maNhom"/>
                                  </div>
