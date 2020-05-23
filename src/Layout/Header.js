@@ -159,7 +159,10 @@ const Header = (props) => {
               </li>
               <li className="nav-item">
                {
-                 isloggedIn? <Link className="nav-link" to="/sign-out" > 
+                 isloggedIn? <Link onClick={()=> {
+                   window.localStorage.clear();
+                   window.location.reload()
+                 }} className="nav-link" to="/sign-out" > 
                  <IconButton ><PowerSettingsNewIcon/></IconButton>
                </Link>    : <div className="nav-link" >
                  <button
