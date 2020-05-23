@@ -222,7 +222,7 @@ console.log(themXoa);
                       onChange = {e => setFieldValue("hinhAnh", e.target.files[0])}
                     />
 
-                    <Label>Mã nhóm</Label>
+                    <Label>Mã nhóm(GP09)</Label>
                     <Input
                       className="form-control"
                       tag={Field}
@@ -230,7 +230,7 @@ console.log(themXoa);
                       name="maNhom"
                     />
 
-                    <Label>Ngày tạo</Label>
+                    <Label>Ngày tạo(dd/mm/yyyy)</Label>
                     <Input
                       className="form-control"
                       tag={Field}

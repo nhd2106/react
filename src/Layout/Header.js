@@ -7,12 +7,23 @@ import IconButton from "@material-ui/core/IconButton";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
-import { Formik, Field } from "formik";
+import { Formik, Field, ErrorMessage } from "formik";
 import { Form, Label, Input, Button } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { DangKyAction } from "../redux/actions/QuanLyNguoiDungAction";
 import {withRouter} from 'react-router-dom'
+import * as yup from "yup";
 
+const signUpSchema = yup.object().shape({
+    taiKhoan: yup.string().required('*phải nhập tài khoản!'),
+    matKhau: yup.string().required('*phải nhập mật khẩu!'),
+    hoTen: yup.string().required('*Phải nhập họ tên!'),
+    soDT: yup.string().matches(/^[0-9]+$/).required('*Phải nhập số điện thoại!'),
+    maNhom: yup.string().required('*Phải nhập mã nhóm!'),
+    email: yup.string().email("*Email is invalid!").required('*Phải nhập email!'),
+   
+    
+})
 const Header = (props) => {
   const StyledBadge = withStyles(theme => ({
     Badge: {
@@ -194,6 +205,7 @@ const Header = (props) => {
                                 maNhom:"",
                                 email:""
                               }}
+                              validationSchema={signUpSchema}
                               onSubmit={values =>{
                                 console.log(values);
                                 dispatch(DangKyAction(values, handleRegisterSuccess, handleRegisterFailed))
@@ -204,29 +216,46 @@ const Header = (props) => {
                                 {({handleSubmit})=>(
                                   <Form>
 
+                                  <div className="form-group">
                                   <Label>Tài khoản</Label>
                                   <Input className="form-control " tag={Field} type='text' name='taiKhoan'/>
+                                  <ErrorMessage name="taiKhoan"/>
+                                  </div>
                                 
 
+                                  <div className='form-group'>
                                   <Label>Mật khẩu</Label>
                                   <Input className="form-control " tag={Field} type='text' name='matKhau'/>
-                                
+                                  <ErrorMessage name="matKhau"/>
+                                  </div>
 
+                                  <div className="form-group">
                                   <Label>Họ tên</Label>
                                   <Input className="form-control " tag={Field} type='text' name='hoTen'/>
-                                
+                                  <ErrorMessage name="hoTen"/>
+                                  </div>
 
+                                  <div className="form-group">
                                   <Label>Số điện thoại</Label>
                                   <Input className="form-control " tag={Field} type='text' name='soDT'/>
-                                
+                                  <ErrorMessage name="soDT">
+                                    {
+                                      (msg) => <div>{msg}</div>
+                                    }
+                                  </ErrorMessage>
+                                  </div>
 
-                                  <Label>Mã nhóm</Label>
+                                 <div className='form-group'>
+                                 <Label>Mã nhóm</Label>
                                   <Input className="form-control " tag={Field} type='text' name='maNhom'/>
-                                
+                                  <ErrorMessage name="maNhom"/>
+                                 </div>
 
+                                  <div className="form-group">
                                   <Label>Email</Label>
                                   <Input className="form-control mb-2" tag={Field} type='text' name='email'/>
-                                
+                                  <ErrorMessage name="email"/>
+                                  </div>
                                  <div className="mt-2  text-center">
                                  <Button className="btn btn-success " type="submit" onClick={handleSubmit}>Đăng ký</Button>
                                  </div>

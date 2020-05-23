@@ -210,7 +210,7 @@ const onToggle =  (status) => {
                       name="soDT"
                     />
 
-                    <Label>Mã loại người dùng</Label>
+                    <Label>Mã loại người dùng (HV hoặc GV)</Label>
                     <Input
                       className="form-control"
                       tag={Field}
@@ -218,7 +218,7 @@ const onToggle =  (status) => {
                       name="maLoaiNguoiDung"
                     />
 
-                    <Label>Mã nhóm</Label>
+                    <Label>Mã nhóm (GP01-GP09)</Label>
                     <Input
                       className="form-control"
                       tag={Field}
