@@ -59,12 +59,12 @@ const AdminLayout = props => {
           <span className='pl-4'> <TrendingUpIcon/> Dashboard </span>
           </Link> 
 
-          <Link to="/admin/user-list" className={`nav-item text-decoration-none py-3 d-block ${adminStyle.adminLink}`}>
+          <Link to="/admin/user-list-2" className={`nav-item text-decoration-none py-3 d-block ${adminStyle.adminLink}`}>
           <span className='pl-4'> <PersonIcon/> Danh sách người dùng</span>
           </Link>
          
           
-          <Link to="/admin/course-list" className={`nav-item text-decoration-none py-3 d-block  ${adminStyle.adminLink}`}>
+          <Link to="/admin/course-list-2" className={`nav-item text-decoration-none py-3 d-block  ${adminStyle.adminLink}`}>
           <span className='pl-4'><ListAltIcon/> Quản lý khóa học</span>
           </Link>
         
