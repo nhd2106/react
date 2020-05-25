@@ -19,7 +19,7 @@ const PaginationComponent = ({
               {
                   pages.map(page=>(
                     <PaginationItem key={page}>    
-                      <PaginationLink onClick={()=>onChangePage(page+1)}>
+                      <PaginationLink onClick={()=>{onChangePage(page+1); window.scrollTo(0,800)}}>
                           {page+1}
                       </PaginationLink>
                     </PaginationItem>

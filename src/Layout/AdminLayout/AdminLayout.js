@@ -29,7 +29,7 @@ const AdminLayout = props => {
                     </li>
                 
                     <li className="nav-item">
-                    <Link to="/home"  className='ml-2 nav-link text-decoration-none '  style={{color:"white"}}><span style={{color:"white"}} type="button" 
+                    <Link to="/"  className='ml-2 nav-link text-decoration-none '  style={{color:"white"}}><span style={{color:"white"}} type="button" 
                     onClick={()=> {
                       window.localStorage.clear();
                       window.location.reload()

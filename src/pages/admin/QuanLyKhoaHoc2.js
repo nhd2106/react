@@ -10,6 +10,8 @@ import {
   chonKhoaHocAction,
   capNhatKhoaHocAction
 } from "../../redux/actions/QuanLyKhoaHocAction";
+import * as yup from 'yup';
+
 import {
   TableContainer,
   TableHead,
@@ -17,15 +19,14 @@ import {
   TableRow,
   Table,
   Paper,
-  TableBody,
-  TablePagination
+  TableBody
 } from "@material-ui/core";
 
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import { Formik, Form, Field, useField } from "formik";
+import { Formik, Form, Field, useField, ErrorMessage } from "formik";
 import { Label, Input, Modal, ModalHeader, ModalBody } from "reactstrap";
 import { toggleModalAction } from "../../redux/actions/QuanLyKhoaHocAction";
 
@@ -41,7 +42,18 @@ const MySelect = ({ values, ...props }) => {
     </select>
   );
 };
-
+const schema =  yup.object().shape({
+  maKhoaHoc: yup.string().required("*Phải nhập mã khóa học"),
+    tenKhoaHoc:yup.string().required("*Phải nhập tên khóa học"),
+    moTa:yup.string().required("*Phải nhập mã mô tả học"),
+    luotXem:yup.string(),
+    danhGia:yup.string(),
+    hinhAnh:yup.string().required("*Phải tải ảnh lên"),
+    maNhom:yup.string().matches(/GP09/, {message: "Mã nhóm phải là GP01"}).required("*Phải nhập mã Nhóm"),
+    ngayTao: yup.string().required("*Phải nhập ngày tạo"),
+    maDanhMucKhoaHoc: yup.string().required("*Phải nhập mã danh mục khóa học"),
+    taiKhoanNguoiTao: yup.string().required("*Phải nhập tài khoản người tạo")
+})
 
   // ---------------------------------
 const QuanLyKhoaHoc2 = () => {
@@ -157,6 +169,7 @@ console.log(themXoa);
                   maDanhMucKhoaHoc: khoaHoc.maDanhMucKhoaHoc,
                   taiKhoanNguoiTao: khoaHoc.taiKhoanNguoiTao
                 }}
+                validationSchema={schema}
                 onSubmit={values => {
                   console.log(values);
                   console.log(values.hinhAnh.name);
@@ -173,14 +186,19 @@ console.log(themXoa);
               >
                 {({ handleSubmit, setFieldValue }) => (
                   <Form>
-                    <Label>Mã khóa học</Label>
+                  <div className="form-group">
+                  <Label>Mã khóa học</Label>
                     <Input
                       className="form-control"
                       tag={Field}
                       type="text"
                       name="maKhoaHoc"
                     />
+                    <ErrorMessage name="maKhoaHoc"/>
+            
+                  </div>
 
+                    <div className="form-group">
                     <Label>tên khóa học</Label>
                     <Input
                       className="form-control"
@@ -188,7 +206,10 @@ console.log(themXoa);
                       type="text"
                       name="tenKhoaHoc"
                     />
+                    <ErrorMessage name="tenKhoaHoc"/>
+                    </div>
 
+                    <div className="form-group">
                     <Label>Mô tả</Label>
                     <Input
                       className="form-control"
@@ -196,7 +217,10 @@ console.log(themXoa);
                       type="text"
                       name="moTa"
                     />
+                    <ErrorMessage name="moTa"/>
+                    </div>
 
+                    <div className="form-group">
                     <Label>Lượt xem</Label>
                     <Input
                       className="form-control"
@@ -204,7 +228,11 @@ console.log(themXoa);
                       type="text"
                       name="luotXem"
                     />
+                    <ErrorMessage name="luotXem"/>
+                    </div>
 
+
+                    <div className="form-group">
                     <Label>Đánh giá</Label>
                     <Input
                       className="form-control"
@@ -212,8 +240,11 @@ console.log(themXoa);
                       type="text"
                       name="danhGia"
                     />
+                    <ErrorMessage name="danhGia"/>
+                    </div>
 
-                    <Label>Hình ảnh</Label>
+                  <div className="form-group">
+                  <Label>Hình ảnh</Label>
                     <Input
                       className="form-control"
                       
@@ -221,7 +252,10 @@ console.log(themXoa);
                       name="hinhAnh"
                       onChange = {e => setFieldValue("hinhAnh", e.target.files[0])}
                     />
+                    <ErrorMessage name="hinhAnh"/>
+                  </div>
 
+                    <div className="form-group">
                     <Label>Mã nhóm(GP09)</Label>
                     <Input
                       className="form-control"
@@ -229,14 +263,23 @@ console.log(themXoa);
                       type="text"
                       name="maNhom"
                     />
+                    <ErrorMessage name="maNhom">
+                      {
+                        (msg) => <div> {msg} </div>
+                      }
+                    </ErrorMessage>
 
-                    <Label>Ngày tạo(dd/mm/yyyy)</Label>
+                    </div>
+                   <div className="form-group">
+                   <Label>Ngày tạo (dd/mm/yyyy)</Label>
                     <Input
                       className="form-control"
                       tag={Field}
                       type="text"
                       name="ngayTao"
                     />
+                    <ErrorMessage name="ngayTao"/>
+                   </div>
 
                     {/* <Label>Tài khoản người tạo</Label>
                     <Input
@@ -246,6 +289,7 @@ console.log(themXoa);
                       name="taiKhoanNguoiTao"
                     /> */}
 
+                    <div className='form-group'>
                     <Label>Mã danh mục khóa học</Label>
                     <MySelect
                       name="maDanhMucKhoaHoc"
@@ -261,6 +305,9 @@ console.log(themXoa);
                         
                       ]}
                     />
+                    <ErrorMessage name="maDanhMucKhoaHoc"/>
+                    </div>
+
 
                     <div className="modal-footer">
                       <button

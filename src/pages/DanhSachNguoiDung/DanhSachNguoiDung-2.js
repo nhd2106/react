@@ -20,10 +20,10 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import { Formik, Field, Form } from "formik";
-import { Input, Label, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Input, Label, Modal, ModalHeader, ModalBody } from "reactstrap";
+import * as yup from 'yup';
 
 const useStyles = makeStyles((theme) => ({
   fab: {
@@ -35,6 +35,16 @@ const useStyles = makeStyles((theme) => ({
     right: theme.spacing(3),
   },
 }));
+
+const userschema =  yup.object().shape({
+    taiKhoan: yup.string().required("*Phải nhập tên tài khoản!"),    
+    matKhau: yup.string().required("*Phải nhập mật khẩu!"),
+    hoTen: yup.string().required("*Phải nhập họ tên!"), 
+    soDT: yup.string().matches(/^[0-9]+$/, {message: "số điện thoại không hợp lệ!"}).required("*Phải nhập số điện thoại!"),
+    maLoaiNguoiDung: yup.string().matches(/HV|GV/,{message:"mã loại người dùng là GV hoặc HV!"}).required("*Phải nhập mã loại người dùng!"), 
+    maNhom: yup.string().matches(/GP01/, {message:"Mã nhóm phải là GP01"}).required("*Phải nhập mã nhóm!"), 
+    email: yup.string().email("*Email không hợp lệ!").required("*Phải nhập email!")
+})
 
 const DanhSachNguoiDung2 = () => {
   const dispatch = useDispatch();
@@ -155,6 +165,7 @@ const onToggle =  (status) => {
           <ModalBody>
            <Formik
             enableReinitialize={true}
+            validationSchema={userschema}
             initialValues={{
               taiKhoan: user.taiKhoan,
               matKhau: user.matKhau,
@@ -176,7 +187,8 @@ const onToggle =  (status) => {
            >
                {props =>(
                     <Form onSubmit={props.handleSubmit}>
-                    <Label>Tài khoản</Label>
+                   <div className="form-group">
+                   <Label>Tài khoản</Label>
                     <Input
                       className="form-control"
                       tag={Field}
@@ -185,7 +197,10 @@ const onToggle =  (status) => {
                       
                       
                     />
+                    <ErrorMessage name="taiKhoan"/>
+                   </div>
 
+                    <div className="form-group">
                     <Label>Mật khẩu</Label>
                     <Input
                       className="form-control"
@@ -193,15 +208,21 @@ const onToggle =  (status) => {
                       type="text"
                       name="matKhau"
                     />
+                    <ErrorMessage name="matKhau"/>
+                    </div>
 
-                    <Label>Họ Tên</Label>
+                   <div className="form-group">
+                   <Label>Họ Tên</Label>
                     <Input
                       className="form-control"
                       tag={Field}
                       type="text"
                       name="hoTen"
                     />
+                    <ErrorMessage name="hoTen"/>
+                   </div>
 
+                    <div className="form-group">
                     <Label>Số điện thoại</Label>
                     <Input
                       className="form-control"
@@ -209,7 +230,13 @@ const onToggle =  (status) => {
                       type="text"
                       name="soDT"
                     />
+                    <ErrorMessage name="soDT">
+                        {(msg)=><div>{msg}</div>}
+                    </ErrorMessage>
+                    </div>
 
+
+                    <div className="form-group">
                     <Label>Mã loại người dùng (HV hoặc GV)</Label>
                     <Input
                       className="form-control"
@@ -217,8 +244,14 @@ const onToggle =  (status) => {
                       type="text"
                       name="maLoaiNguoiDung"
                     />
+                    <ErrorMessage name="maLoaiNguoiDung">
+                        {(msg)=><div>{msg}</div>}
+                    </ErrorMessage>
+                    </div>
 
-                    <Label>Mã nhóm (GP01-GP09)</Label>
+
+                    <div className="form-group">
+                    <Label>Mã nhóm (GP01)</Label>
                     <Input
                       className="form-control"
                       tag={Field}
@@ -226,7 +259,12 @@ const onToggle =  (status) => {
                       name="maNhom"
                       
                     />
+                    <ErrorMessage name="maNhom">
+                        {(msg)=><div>{msg}</div>}
+                    </ErrorMessage>
+                    </div>
 
+                    <div className="form-group">
                     <Label>Email</Label>
                     <Input
                       className="form-control"
@@ -234,6 +272,8 @@ const onToggle =  (status) => {
                       type="text"
                       name="email"
                     />
+                    <ErrorMessage name="email"/>
+                    </div>
                     <div className="modal-footer">
                       <button
                         type="button"

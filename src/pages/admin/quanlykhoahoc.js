@@ -15,8 +15,7 @@ import {
   TableRow,
   Table,
   Paper,
-  TableBody,
-  TablePagination
+  TableBody
 } from "@material-ui/core";
 
 import AddIcon from "@material-ui/icons/Add";
@@ -27,7 +26,7 @@ import { Formik, Form, Field, useField } from "formik";
 import { Label, Input } from "reactstrap";
 
 const MySelect = ({ values, ...props }) => {
-  const [field, meta] = useField(props);
+  const [field] = useField(props);
   return (
     <select className="form-control" {...field} {...props}>
       {values.map(item => (

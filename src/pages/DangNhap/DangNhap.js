@@ -4,7 +4,7 @@ import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { DangNhapAction } from "../../redux/actions/QuanLyNguoiDungAction";
 import { Link } from "react-router-dom";
-
+import HomeIcon from '@material-ui/icons/Home'
 const DangNhap = props => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector(state => state.quanLyNguoiDungReducer);
@@ -23,7 +23,7 @@ const DangNhap = props => {
   }, [userInfo]);
 
   return (
-    <div className=" py-5" style={{ background: "#007bff", background: 'linear-gradient(to right, #0062E6, #33AEFF)' }}>
+    <div className=" py-5" style={{ background: 'linear-gradient(to right, #0062E6, #33AEFF)' }}>
       <div className='container py-5'>
       <div className="col-sm-9 col-md-7 col-lg-5 mx-auto py-5">
         <div className="card card-signin my-5 py-5">
@@ -54,7 +54,7 @@ const DangNhap = props => {
                         </Button>
                         </FormGroup>
                         <div>
-                          <Link to="/">Trang chủ</Link>
+                          <Link to="/"><span style={{color:"black"}}><HomeIcon /></span> Trang chủ</Link>
                         </div>
                     </Form>
                 )}

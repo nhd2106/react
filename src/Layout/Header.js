@@ -20,7 +20,7 @@ const signUpSchema = yup.object().shape({
     hoTen: yup.string().required('*Phải nhập họ tên!'),
     soDT: yup.string().matches(/^[0-9]+$/).required('*Phải nhập số điện thoại!'),
     maNhom: yup.string().required('*Phải nhập mã nhóm!'),
-    email: yup.string().email("*Email is invalid!").required('*Phải nhập email!'),
+    email: yup.string().email("*Email không hợp lệ").required('*Phải nhập email!'),
    
     
 })
@@ -142,7 +142,7 @@ const Header = (props) => {
                 <Link className="nav-link" to="/cart" id="cart">
                  
                   <IconButton aria-label="cart">
-                    <StyledBadge badgeContent={0} color="secondary">
+                    <StyledBadge  badgeContent={0} color="secondary">
                       <ShoppingCartIcon />
                     </StyledBadge>
                   </IconButton>
@@ -249,7 +249,7 @@ const Header = (props) => {
                                   </div>
 
                                  <div className='form-group'>
-                                 <Label>Mã nhóm (GP01->GP09)</Label>
+                                 <Label>Mã nhóm (GP01)</Label>
                                   <Input className="form-control " tag={Field} type='text' name='maNhom'/>
                                   <ErrorMessage name="maNhom"/>
                                  </div>
@@ -273,9 +273,7 @@ const Header = (props) => {
                             Bạn đã có tài khoản?{" "}
                             <Link type="button"
                               to="/sign-in"
-                              
                               className="blue-text"
-                              
                             >
                               Đăng nhập
                             </Link>

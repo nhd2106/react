@@ -13,17 +13,7 @@ class Carousel extends Component {
   }
   render() {
     const carouselcolor = '#12CBD7'
-    const settings = {
-      dots: false,
-      arrows: false,
-      infinite: true,
-      speed: 550,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplayspeed: 50,
-      draggable: false
-    };
+
     return (
       <div className="">
         <div className={carouStyle.carouselBackground}>
